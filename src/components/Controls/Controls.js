@@ -11,7 +11,7 @@ export default function Controls({ query, setQuery, setLoading }) {
           setQuery(e.target.value);
         }}
       />
-      <button onClick={(e) => setLoading(true)}>Search</button>
+      <button onClick={() => setLoading(true)}>Search</button>
     </div>
   );
 }

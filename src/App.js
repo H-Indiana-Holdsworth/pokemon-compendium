@@ -7,21 +7,18 @@ import Controls from './components/Controls/Controls';
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [query, setQuery] = useState('');
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  useEffect(
-    (query) => {
-      const fetchData = async () => {
-        const data = await getPokemon(query);
-        setPokemon(data.results);
-        setLoading(false);
-      };
-      if (loading) {
-        fetchData();
-      }
-    },
-    [loading]
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getPokemon(query);
+      setPokemon(data.results);
+      setLoading(false);
+    };
+    if (loading) {
+      fetchData();
+    }
+  }, [loading, query]);
 
   return (
     <div className="App">
