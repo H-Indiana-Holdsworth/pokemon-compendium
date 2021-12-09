@@ -46,7 +46,13 @@ function App() {
             page={page}
             setPage={setPage}
           />
-          <PokeList pokemon={pokemon} />
+          <PokeList
+            pokemon={pokemon}
+            page={page}
+            setPage={setPage}
+            loading={loading}
+            setLoading={setLoading}
+          />
         </>
       )}
     </div>
