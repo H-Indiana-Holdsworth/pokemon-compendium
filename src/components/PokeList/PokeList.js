@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React from 'react';
 import './PokeList.css';
 
@@ -30,8 +31,12 @@ export default function PokeList({ pokemon, page, setPage, setLoading }) {
         </div>
       </div>
       <div>Page:{page}</div>
-      <button onClick={handlePrevPage}>Previous Page</button>
-      <button onClick={handleNextPage}>Next Page</button>
+      <Button variant="filled" sx={{ backgroundColor: 'secondary.light' }} onClick={handlePrevPage}>
+        Previous Page
+      </Button>
+      <Button variant="filled" sx={{ backgroundColor: 'secondary.light' }} onClick={handleNextPage}>
+        Next Page
+      </Button>
     </div>
   );
 }
