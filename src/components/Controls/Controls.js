@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import React from 'react';
 
 export default function Controls({
@@ -35,7 +36,9 @@ export default function Controls({
         ))}
       </select>
 
-      <button onClick={() => setLoading(true)}>Search</button>
+      <Button variant="contained" onClick={() => setLoading(true)}>
+        Search
+      </Button>
     </div>
   );
 }
