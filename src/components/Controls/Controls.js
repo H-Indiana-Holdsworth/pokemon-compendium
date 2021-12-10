@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+import { Button, MenuItem, Select, TextField } from '@mui/material';
 import React from 'react';
 
 export default function Controls({
@@ -13,7 +13,10 @@ export default function Controls({
 }) {
   return (
     <div>
-      <input
+      <TextField
+        id="filled-basic"
+        label="Filled"
+        variant="filled"
         type="text"
         placeholder="Search pokemans"
         value={query}
@@ -22,21 +25,25 @@ export default function Controls({
         }}
       />
 
-      <select value={order} onChange={(e) => setOrder(e.target.value)}>
-        <option value="asc">Ascending</option>
-        <option value="desc">Descending</option>
-      </select>
+      <Select value={order} onChange={(e) => setOrder(e.target.value)}>
+        <MenuItem value="asc">Ascending</MenuItem>
+        <MenuItem value="desc">Descending</MenuItem>
+      </Select>
 
-      <select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
-        <option value="All">All</option>
+      <Select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
+        <MenuItem value="All">All</MenuItem>
         {type.map((typ) => (
-          <option key={typ} value={typ}>
+          <MenuItem key={typ} value={typ}>
             {typ}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <Button variant="contained" onClick={() => setLoading(true)}>
+      <Button
+        sx={{ backgroundColor: 'success.main' }}
+        variant="contained"
+        onClick={() => setLoading(true)}
+      >
         Search
       </Button>
     </div>
