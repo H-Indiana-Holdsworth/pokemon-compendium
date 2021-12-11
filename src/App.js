@@ -1,8 +1,9 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
-import { getPokemon, getTypes } from './services/Pokemon';
+import './App.css';
+import { getPokemon, getTypes, getCount } from './services/Pokemon';
 import PokeList from './components/PokeList/PokeList';
 import Controls from './components/Controls/Controls';
+import Graph from './components/Graph/Graph';
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -12,6 +13,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [type, setType] = useState([]);
   const [selectedType, setSelectedType] = useState('All');
+  const [count, setCount] = useState([]);
 
   useEffect(() => {
     let timer;
@@ -41,6 +43,16 @@ function App() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getCount();
+      setCount(data);
+    };
+    if (loading) {
+      fetchData();
+    }
+  }, [count, setCount, loading]);
+
   return (
     <div className="App">
       <h1>Pokedex</h1>
@@ -66,6 +78,7 @@ function App() {
             loading={loading}
             setLoading={setLoading}
           />
+          <Graph pokemon={pokemon} count={count} setCount={setCount} loading={loading} />
         </>
       )}
     </div>

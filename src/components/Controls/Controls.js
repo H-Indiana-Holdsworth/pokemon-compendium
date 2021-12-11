@@ -33,8 +33,9 @@ export default function Controls({
       <Select value={selectedType} onChange={(e) => setSelectedType(e.target.value)}>
         <MenuItem value="All">All</MenuItem>
         {type.map((typ) => (
-          <MenuItem key={typ} value={typ}>
+          <MenuItem key={typ.id} value={typ}>
             {typ}
+            console.log(typ)
           </MenuItem>
         ))}
       </Select>
